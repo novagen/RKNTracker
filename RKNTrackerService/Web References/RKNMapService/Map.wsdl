@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://rubi-ka.net/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://rubi-ka.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://rubi-ka.net/">
+      <s:element name="UpdateCharacterLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Characters" type="tns:ArrayOfCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCharacter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Character" nillable="true" type="tns:Character" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Character">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NickName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileXML" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Faction" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Breed" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Photo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Org" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zone" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateCharacterLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCharacterLocationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCharacterLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AccountId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCharacterLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCharacterLocationsResult" type="tns:ArrayOfMapLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMapLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MapLocation" nillable="true" type="tns:MapLocation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MapLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NickName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Photo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zone" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCharacterLocationsForAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AccountId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCharacterLocationsForAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCharacterLocationsForAdminResult" type="tns:ArrayOfMapLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCharacterLocationsByAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCharacterLocationsByAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCharacterLocationsByAccountResult" type="tns:ArrayOfMapLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateCharacterLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCharacterLocation" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCharacterLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCharacterLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocations" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsForAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocationsForAdmin" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsForAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocationsForAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsByAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocationsByAccount" />
+  </wsdl:message>
+  <wsdl:message name="GetCharacterLocationsByAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCharacterLocationsByAccountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MapSoap">
+    <wsdl:operation name="UpdateCharacterLocation">
+      <wsdl:input message="tns:UpdateCharacterLocationSoapIn" />
+      <wsdl:output message="tns:UpdateCharacterLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocations">
+      <wsdl:input message="tns:GetCharacterLocationsSoapIn" />
+      <wsdl:output message="tns:GetCharacterLocationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsForAdmin">
+      <wsdl:input message="tns:GetCharacterLocationsForAdminSoapIn" />
+      <wsdl:output message="tns:GetCharacterLocationsForAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsByAccount">
+      <wsdl:input message="tns:GetCharacterLocationsByAccountSoapIn" />
+      <wsdl:output message="tns:GetCharacterLocationsByAccountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MapSoap" type="tns:MapSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateCharacterLocation">
+      <soap:operation soapAction="http://rubi-ka.net/UpdateCharacterLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocations">
+      <soap:operation soapAction="http://rubi-ka.net/GetCharacterLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsForAdmin">
+      <soap:operation soapAction="http://rubi-ka.net/GetCharacterLocationsForAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsByAccount">
+      <soap:operation soapAction="http://rubi-ka.net/GetCharacterLocationsByAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MapSoap12" type="tns:MapSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateCharacterLocation">
+      <soap12:operation soapAction="http://rubi-ka.net/UpdateCharacterLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocations">
+      <soap12:operation soapAction="http://rubi-ka.net/GetCharacterLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsForAdmin">
+      <soap12:operation soapAction="http://rubi-ka.net/GetCharacterLocationsForAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterLocationsByAccount">
+      <soap12:operation soapAction="http://rubi-ka.net/GetCharacterLocationsByAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Map">
+    <wsdl:port name="MapSoap" binding="tns:MapSoap">
+      <soap:address location="https://rubi-ka.net/API/v1/Map.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MapSoap12" binding="tns:MapSoap12">
+      <soap12:address location="https://rubi-ka.net/API/v1/Map.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
